@@ -26,10 +26,23 @@ builder.Services.AddScoped<ICacheService, RedisCacheService>();
 builder.Services.AddScoped<IComfortIndexCalculator, ComfortIndexCalculator>();
 builder.Services.AddScoped<GetCityComfortRanking>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReact",
+        policy => policy
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod());
+});
+
+
 var app = builder.Build();
+
 
 app.UseSwagger();
 app.UseSwaggerUI();
+
+app.UseCors("AllowReact");
 
 app.MapControllers();
 app.Run();

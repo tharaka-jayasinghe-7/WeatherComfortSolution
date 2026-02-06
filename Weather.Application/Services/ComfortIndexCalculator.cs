@@ -23,13 +23,9 @@ public class ComfortIndexCalculator : IComfortIndexCalculator
         return new ComfortScore
         {
             Value = Math.Round(score, 2),
-            Description = score switch
-            {
-                >= 80 => "Very Comfortable",
-                >= 60 => "Comfortable",
-                >= 40 => "Moderate",
-                _ => "Uncomfortable"
-            }
+            Description = score >= 80 ? "Very Comfortable" :
+                score >= 60 ? "Comfortable" :
+                score >= 40 ? "Moderate" : "Uncomfortable"
         };
     }
 }
