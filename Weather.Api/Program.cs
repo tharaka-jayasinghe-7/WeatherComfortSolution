@@ -42,7 +42,6 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Enable Swagger
 app.UseSwagger();
 app.UseSwaggerUI();
 
@@ -53,5 +52,4 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
 app.Run();
